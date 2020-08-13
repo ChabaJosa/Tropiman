@@ -479,7 +479,7 @@ Pacman.User = function (game, map) {
             return;
         }
 
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = "#FEEC00";
         ctx.beginPath();        
         ctx.moveTo(((position.x/10) * size) + half, 
                    ((position.y/10) * size) + half);
@@ -496,7 +496,7 @@ Pacman.User = function (game, map) {
         var s     = map.blockSize, 
             angle = calcAngle(direction, position);
 
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = "#FEEC00";
 
         ctx.beginPath();        
 
@@ -559,7 +559,7 @@ Pacman.Map = function (size) {
 
         var i, j, p, line;
         
-        ctx.strokeStyle = "#0000FF";
+        ctx.strokeStyle = "#02C6E5";
         ctx.lineWidth   = 5;
         ctx.lineCap     = "round";
         
@@ -611,7 +611,7 @@ Pacman.Map = function (size) {
                 if (map[i][j] === Pacman.PILL) {
                     ctx.beginPath();
 
-                    ctx.fillStyle = "#000";
+                    ctx.fillStyle = "#EA5A9B";
 		            ctx.fillRect((j * blockSize), (i * blockSize), 
                                  blockSize, blockSize);
 
@@ -632,7 +632,7 @@ Pacman.Map = function (size) {
         
         var i, j, size = blockSize;
 
-        ctx.fillStyle = "#000";
+        ctx.fillStyle = "#EA5A9B";
 	    ctx.fillRect(0, 0, width * size, height * size);
 
         drawWall(ctx);
@@ -657,7 +657,7 @@ Pacman.Map = function (size) {
         if (layout === Pacman.EMPTY || layout === Pacman.BLOCK || 
             layout === Pacman.BISCUIT) {
             
-            ctx.fillStyle = "#000";
+            ctx.fillStyle = "#EA5A9B";
 		    ctx.fillRect((x * blockSize), (y * blockSize), 
                          blockSize, blockSize);
 
@@ -802,7 +802,7 @@ var PACMAN = (function () {
     }
     
     function dialog(text) {
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = "#FEEC00";
         ctx.font      = "14px BDCartoonShoutRegular";
         var width = ctx.measureText(text).width,
             x     = ((map.width * map.blockSize) - width) / 2;        
@@ -875,15 +875,16 @@ var PACMAN = (function () {
     function drawFooter() {
         
         var topLeft  = (map.height * map.blockSize),
-            textBase = topLeft + 17;
+            textBase = topLeft + 20; // Score + Level Height
         
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(0, topLeft, (map.width * map.blockSize), 30);
+        ctx.fillStyle = "#02C6E5";
+        ctx.fillRect(0, topLeft, (map.width * map.blockSize), 40);
         
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = "#FEEC00";
 
+        // Here you'll move the pacman lives that need centering
         for (var i = 0, len = user.getLives(); i < len; i++) {
-            ctx.fillStyle = "#FFFF00";
+            ctx.fillStyle = "#FEEC00";
             ctx.beginPath();
             ctx.moveTo(150 + (25 * i) + map.blockSize / 2,
                        (topLeft+1) + map.blockSize / 2);
@@ -899,7 +900,7 @@ var PACMAN = (function () {
         //ctx.fillText("♪", 10, textBase);
         ctx.fillText("s", 10, textBase);
 
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = "#FEEC00";
         ctx.font      = "14px BDCartoonShoutRegular";
         ctx.fillText("Score: " + user.theScore(), 30, textBase);
         ctx.fillText("Level: " + level, 260, textBase);
